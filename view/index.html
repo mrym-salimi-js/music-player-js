@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicPlayer</title>
+    <link href="css/app.css" rel="stylesheet">
+    <script src="app.js" type="module" defer></script>
+</head>
+
+<style>
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #2f2f2f;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #3d3d3d;
+    }
+
+    /* ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    } */
+</style>
+
+<body class="select-none">
+
+    <div class="w-full h-full ">
+        <div class="main w-full min-h-full h-auto absolute right-0 bg-[#212121] pb- overflow-hidden">
+            <!-- Social Media Sharing -->
+            <div id="sharing-icon-box" class="hidden w-auto h-auto flex items-center gap-[10px] flex-col  fixed top-20 right-2 z-[100000]">
+                <svg id="ext-sharing-icon-box" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                class="w-6 h-6 cursor-pointer animate-slideBottom1 fill-[#fbe81e]">
+                <path fill-rule="evenodd"
+                    d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
+                    clip-rule="evenodd" />
+            </svg>
+                <svg class="w-8 h-8 cursor-pointer animate-slideBottom1" xmlns="http://www.w3.org/2000/svg" x="0px"
+                    y="0px" width="100" height="100" viewBox="0,0,256,256" download-link="active">
+                    <a id="telegram" class="social-media-share" download-link="active">
+
+                        <g fill="#fbe81e" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                            style="mix-blend-mode: normal">
+                            <g transform="scale(5.12,5.12)">
+                                <path download-link="active"
+                                    d="M46.137,6.552c-0.75,-0.636 -1.928,-0.727 -3.146,-0.238h-0.002c-1.281,0.514 -36.261,15.518 -37.685,16.131c-0.259,0.09 -2.521,0.934 -2.288,2.814c0.208,1.695 2.026,2.397 2.248,2.478l8.893,3.045c0.59,1.964 2.765,9.21 3.246,10.758c0.3,0.965 0.789,2.233 1.646,2.494c0.752,0.29 1.5,0.025 1.984,-0.355l5.437,-5.043l8.777,6.845l0.209,0.125c0.596,0.264 1.167,0.396 1.712,0.396c0.421,0 0.825,-0.079 1.211,-0.237c1.315,-0.54 1.841,-1.793 1.896,-1.935l6.556,-34.077c0.4,-1.82 -0.156,-2.746 -0.694,-3.201zM22,32l-3,8l-3,-10l23,-17z">
+                                </path>
+                            </g>
+                        </g>
+
+                    </a>
+                </svg>
+                <svg class="w-8 h-8 cursor-pointer animate-slideBottom3" xmlns="http://www.w3.org/2000/svg" x="0px"
+                    y="0px" width="100" height="100" viewBox="0,0,256,256" download-link="active">
+                    <a id="whats-app" class="social-media-share" download-link="active">
+
+                        <g fill="#fbe81e" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                            style="mix-blend-mode: normal">
+                            <g transform="scale(5.12,5.12)">
+                                <path download-link="active"
+                                    d="M25,2c-12.682,0 -23,10.318 -23,23c0,3.96 1.023,7.854 2.963,11.29l-2.926,10.44c-0.096,0.343 -0.003,0.711 0.245,0.966c0.191,0.197 0.451,0.304 0.718,0.304c0.08,0 0.161,-0.01 0.24,-0.029l10.896,-2.699c3.327,1.786 7.074,2.728 10.864,2.728c12.682,0 23,-10.318 23,-23c0,-12.682 -10.318,-23 -23,-23zM36.57,33.116c-0.492,1.362 -2.852,2.605 -3.986,2.772c-1.018,0.149 -2.306,0.213 -3.72,-0.231c-0.857,-0.27 -1.957,-0.628 -3.366,-1.229c-5.923,-2.526 -9.791,-8.415 -10.087,-8.804c-0.295,-0.389 -2.411,-3.161 -2.411,-6.03c0,-2.869 1.525,-4.28 2.067,-4.864c0.542,-0.584 1.181,-0.73 1.575,-0.73c0.394,0 0.787,0.005 1.132,0.021c0.363,0.018 0.85,-0.137 1.329,1.001c0.492,1.168 1.673,4.037 1.819,4.33c0.148,0.292 0.246,0.633 0.05,1.022c-0.196,0.389 -0.294,0.632 -0.59,0.973c-0.296,0.341 -0.62,0.76 -0.886,1.022c-0.296,0.291 -0.603,0.606 -0.259,1.19c0.344,0.584 1.529,2.493 3.285,4.039c2.255,1.986 4.158,2.602 4.748,2.894c0.59,0.292 0.935,0.243 1.279,-0.146c0.344,-0.39 1.476,-1.703 1.869,-2.286c0.393,-0.583 0.787,-0.487 1.329,-0.292c0.542,0.194 3.445,1.604 4.035,1.896c0.59,0.292 0.984,0.438 1.132,0.681c0.148,0.242 0.148,1.41 -0.344,2.771z">
+                                </path>
+                            </g>
+                        </g>
+                    </a>
+                </svg>
+                <svg class="w-8 h-8 cursor-pointer animate-slideBottom5" xmlns="http://www.w3.org/2000/svg" x="0px"
+                    y="0px" width="100" height="100" viewBox="0,0,256,256" download-link="active">
+                    <a id="face-book" class="social-media-share" download-link="active">
+
+                        <g fill="#fbe81e" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                            style="mix-blend-mode: normal">
+                            <g transform="scale(4,4)">
+                                <path download-link="active"
+                                    d="M32,6c-14.358,0 -26,11.642 -26,26c0,13.035 9.603,23.799 22.113,25.679v-18.789h-6.433v-6.834h6.433v-4.548c0,-7.529 3.668,-10.833 9.926,-10.833c2.996,0 4.583,0.223 5.332,0.323v5.965h-4.268c-2.656,0 -3.584,2.52 -3.584,5.358v3.735h7.785l-1.055,6.834h-6.73v18.843c12.69,-1.72 22.481,-12.57 22.481,-25.733c0,-14.358 -11.641,-26 -26,-26z">
+                                </path>
+                            </g>
+                        </g>
+
+                    </a>
+                </svg>
+
+                <svg class="w-8 h-8 cursor-pointer animate-slideBottom6" xmlns="http://www.w3.org/2000/svg" x="0px"
+                    y="0px" width="100" height="100" viewBox="0,0,256,256" download-link="active">
+                    <a id="linkdin" class="social-media-share" download-link="active">
+
+
+                        <g fill="#fbe81e" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                            style="mix-blend-mode: normal">
+                            <g transform="scale(5.12,5.12)">
+                                <path download-link="active"
+                                    d="M41,4h-32c-2.76,0 -5,2.24 -5,5v32c0,2.76 2.24,5 5,5h32c2.76,0 5,-2.24 5,-5v-32c0,-2.76 -2.24,-5 -5,-5zM17,20v19h-6v-19zM11,14.47c0,-1.4 1.2,-2.47 3,-2.47c1.8,0 2.93,1.07 3,2.47c0,1.4 -1.12,2.53 -3,2.53c-1.8,0 -3,-1.13 -3,-2.53zM39,39h-6c0,0 0,-9.26 0,-10c0,-2 -1,-4 -3.5,-4.04h-0.08c-2.42,0 -3.42,2.06 -3.42,4.04c0,0.91 0,10 0,10h-6v-19h6v2.56c0,0 1.93,-2.56 5.81,-2.56c3.97,0 7.19,2.73 7.19,8.26z">
+                                </path>
+                            </g>
+                        </g>
+
+
+                    </a>
+                </svg>
+            </div>
+            <!-- Navigatore -->
+            <div class="nav w-[75px] h-full fixed left-0 bg-black border-r-[1px] border-[#2e2e2e] p-3 md:w-[230px] ">
+                <a id="menu-logo" href="Home"
+                    class="hidden md:block text-white font-black text-2xl font-sans p-3">MusicPlayer</a>
+                <ul class=" mt-3 flex flex-col gap-1 ">
+                    <li id="Home"
+                        class="md:flex md:gap-4 md:items-center p-4 cursor-pointer bg-[#212121] transition-all rounded-md relative nav-li">
+                        <a href="Home" class="w-full h-full block absolute left-0 top-0"></a>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-5 h-5 fill-white inline-block">
+                            <path
+                                d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                            <path
+                                d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+                        </svg>
+                        <p class="hidden md:inline-block text-center text-sm text-white font-sans ">
+                            Home
+                        </p>
+                    </li>
+                    <li id="Explore"
+                        class="md:flex md:gap-4 md:items-center p-4 cursor-pointer hover:bg-[#222224] transition-all rounded-md relative nav-li">
+                        <a href="Explore" class="w-full h-full block absolute left-0 top-0"></a>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-5 h-5 fill-white inline-block">
+                            <path fill-rule="evenodd"
+                                d="M19.952 1.651a.75.75 0 01.298.599V16.303a3 3 0 01-2.176 2.884l-1.32.377a2.553 2.553 0 11-1.403-4.909l2.311-.66a1.5 1.5 0 001.088-1.442V6.994l-9 2.572v9.737a3 3 0 01-2.176 2.884l-1.32.377a2.553 2.553 0 11-1.402-4.909l2.31-.66a1.5 1.5 0 001.088-1.442V9.017 5.25a.75.75 0 01.544-.721l10.5-3a.75.75 0 01.658.122z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+
+                        <p class=" hidden md:inline-block text-center text-sm text-white font-sans">
+                            Explore
+                        </p>
+
+                    </li>
+                    <li id="Search"
+                        class="md:flex md:gap-4 md:items-center p-4 cursor-pointer hover:bg-[#222224] transition-all rounded-md relative nav-li">
+                        <a href="Search" class="w-full h-full block absolute left-0 top-0"></a>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-5 h-5 fill-white inline-block">
+                            <path fill-rule="evenodd"
+                                d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+                        <p class=" hidden md:inline-block text-center text-sm text-white font-sans">
+                            Search
+                        </p>
+
+                    </li>
+                </ul>
+            </div>
+            <!-- Music Items Body -->
+            <div
+                class="main_tracks left-[60px] sm:w-[93%] md:w-[75%] lg:w-[81%] xl:w-[86%] w-[88%] h-auto relative md:left-[229px] mb-[70px]">
+            </div>
+            <!-- Music Loader -->
+            <div id="music_loader_box"
+                class="left-[76px] sm:w-[93%] md:w-[76%] lg:w-[81%] xl:w-[86%] w-[88%] h-auto md:left-[229px] bg-[#383838d9] fixed bottom-0 z-[1000] hidden">
+
+                <!-- Music Runner -->
+                <div id="progress_bar" class="w-full h-1 bg-[#2e2e2e] cursor-pointer">
+                    <div id="progress" class="w-0 h-full bg-[#fbe81d]">
+
+                    </div>
+                </div>
+                <!-- Music Info And Controller Tool -->
+                <div class="w-full flex flex-row-reverse flex-wrap justify-around items-center h-full p-3">
+                    <!-- Music Profile  -->
+                    <div class="w-auto flex flex-row-reverse gap-3 items-center">
+                        <img id="music_loader_profile" class="hidden md:inline-block w-12 h-12 rounded-md" src="">
+                        <div class="w-auto h-12  flex flex-col gap-1 ">
+                            <p id="music_loader_name" class="hidden sm:inline-block text-white font-normal text-right">
+                                Modelame</p>
+                            <p id="music_loader_artist" class="hidden sm:inline-block text-gray-500 text-sm text-right">
+                                Yousef Zamani</p>
+                        </div>
+
+                    </div>
+                    <!-- Timer -->
+                    <div class="w-28 flex  gap-2 md:gap-6 items-center">
+                        <p id="current_time" class="font-normal text-[#626262]">00:00</p>
+                        <p class="text-[#626262]">/</p>
+                        <p id="duration" class="font-normal text-[#fbe81d]">00:00</p>
+
+                    </div>
+
+                    <!-- Play Pause Next Preve -->
+                    <div class="w-auto flex flex-row-reverse gap-2 md:gap-7 items-center">
+                        <span id="next" class="cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-6 h-6 fill-[#fbe81d]">
+                                <path
+                                    d="M5.055 7.06c-1.25-.714-2.805.189-2.805 1.628v8.123c0 1.44 1.555 2.342 2.805 1.628L12 14.471v2.34c0 1.44 1.555 2.342 2.805 1.628l7.108-4.061c1.26-.72 1.26-2.536 0-3.256L14.805 7.06C13.555 6.346 12 7.25 12 8.688v2.34L5.055 7.06z" />
+                            </svg>
+
+                        </span>
+                        <span id="stop_btn" class="cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-6 h-6 fill-[#fbe81d]">
+                                <path fill-rule="evenodd"
+                                    d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                                    clip-rule="evenodd" />
+                            </svg>
+
+                        </span>
+                        <span id="play_btn" class="cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-6 h-6 fill-[#fbe81d]">
+                                <path fill-rule="evenodd"
+                                    d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z"
+                                    clip-rule="evenodd" />
+                            </svg>
+
+                        </span>
+                        <span id="prev" class="cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-6 h-6 fill-[#fbe81d]">
+                                <path
+                                    d="M9.195 18.44c1.25.713 2.805-.19 2.805-1.629v-2.34l6.945 3.968c1.25.714 2.805-.188 2.805-1.628V8.688c0-1.44-1.555-2.342-2.805-1.628L12 11.03v-2.34c0-1.44-1.555-2.343-2.805-1.629l-7.108 4.062c-1.26.72-1.26 2.536 0 3.256l7.108 4.061z" />
+                            </svg>
+
+                        </span>
+                    </div>
+                    <!--Volum -->
+                    <div class="hidden lg:w-auto lg:flex lg:gap-3 lg:items-center ">
+                        <svg id="volume_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-6 h-6 fill-[#fbe81d] cursor-pointer">
+                            <path
+                                d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 001.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06zM18.584 5.106a.75.75 0 011.06 0c3.808 3.807 3.808 9.98 0 13.788a.75.75 0 11-1.06-1.06 8.25 8.25 0 000-11.668.75.75 0 010-1.06z" />
+                            <path
+                                d="M15.932 7.757a.75.75 0 011.061 0 6 6 0 010 8.486.75.75 0 01-1.06-1.061 4.5 4.5 0 000-6.364.75.75 0 010-1.06z" />
+                        </svg>
+                        <svg id="no_volume_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" class="w-6 h-6 fill-[#fbe81d] hidden cursor-pointer">
+                            <path
+                                d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 0 0 1.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06ZM17.78 9.22a.75.75 0 1 0-1.06 1.06L18.44 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06l1.72-1.72 1.72 1.72a.75.75 0 1 0 1.06-1.06L20.56 12l1.72-1.72a.75.75 0 1 0-1.06-1.06l-1.72 1.72-1.72-1.72Z" />
+                        </svg>
+
+
+                        <div id="volume_prgg_bar" class="w-[100px] bg-[#505050] cursor-pointer">
+                            <div id="volume_progg" class="h-1 bg-[#fbe81d]"></div>
+                        </div>
+                    </div>
+                    <!-- Controller tool -->
+                    <div class="w-auto flex gap-3 cursor-pointer">
+                        <svg id="ext_audio" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-6 h-6 fill-[#505050]">
+                            <path fill-rule="evenodd"
+                                d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <svg id="repeat-audio" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" class="w-6 h-6 fill-[#505050] ">
+                            <path fill-rule="evenodd"
+                                d="M12 5.25c1.213 0 2.415.046 3.605.135a3.256 3.256 0 013.01 3.01c.044.583.077 1.17.1 1.759L17.03 8.47a.75.75 0 10-1.06 1.06l3 3a.75.75 0 001.06 0l3-3a.75.75 0 00-1.06-1.06l-1.752 1.751c-.023-.65-.06-1.296-.108-1.939a4.756 4.756 0 00-4.392-4.392 49.422 49.422 0 00-7.436 0A4.756 4.756 0 003.89 8.282c-.017.224-.033.447-.046.672a.75.75 0 101.497.092c.013-.217.028-.434.044-.651a3.256 3.256 0 013.01-3.01c1.19-.09 2.392-.135 3.605-.135zm-6.97 6.22a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.752-1.751c.023.65.06 1.296.108 1.939a4.756 4.756 0 004.392 4.392 49.413 49.413 0 007.436 0 4.756 4.756 0 004.392-4.392c.017-.223.032-.447.046-.672a.75.75 0 00-1.497-.092c-.013.217-.028.434-.044.651a3.256 3.256 0 01-3.01 3.01 47.953 47.953 0 01-7.21 0 3.256 3.256 0 01-3.01-3.01 47.759 47.759 0 01-.1-1.759L6.97 15.53a.75.75 0 001.06-1.06l-3-3z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

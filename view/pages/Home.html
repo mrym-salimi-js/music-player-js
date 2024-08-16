@@ -1,0 +1,185 @@
+<style>
+    .ul-box {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .ul-box::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+
+<!-- Artists -->
+<div class="w-[98%] h-auto p-4 ">
+    <p class="w-full font-sans text-xl font-black text-left text-white px-3">Artists</p>
+    <div class="w-full h-full overflow-x-scroll ul-box">
+
+        <ul id="artists_ul" class="w-auto py-3 flex relative m-0 z-50 Artist">
+
+
+        </ul>
+    </div>
+
+</div>
+<!-- Artists li template -->
+<template id="artists_li_template">
+    <li class="min-w-[150px] w-[150px] h-auto inline-block px-3 cursor-pointer relative">
+        <a id="track-a" href="Single">
+            <img id="artist_profile" draggable="false" class=" rounded-full h-[126px] w-[126px]" src="">
+
+            <div id="play-icon"
+                class="w-12 h-12 bg-white  absolute top-28 right-7 rounded-full flex justify-center items-center opacity-0">
+                <div class="w-5 h-5 bg-black clip-path-triangular ml-3"></div>
+            </div>
+
+            <div class="w-full flex flex-col justify-center py-2 overflow-hidden">
+                <p id="artist_name" class="text-white text-center font-medium"></p>
+            </div>
+        </a>
+    </li>
+</template>
+<!-- New Tracks-->
+<div class="w-[98%]  h-auto p-4">
+    <p class="w-full font-sans text-xl font-black text-left text-white px-3">New Tracks</p>
+    <div class="w-full h-full overflow-x-scroll ul-box">
+        <ul id="new_tracks_ul" class="w-auto py-3 flex relative m-0 z-50 New-Tracks">
+
+
+        </ul>
+    </div>
+</div>
+<!-- NewTracks li template -->
+<template id="new_tracks_li_template">
+
+    <li class="min-w-[200px] w-[200px] h-auto inline-block px-3 cursor-pointer relative ">
+        <a id="track-a" href="Single">
+            <img id="tracks_profile" draggable="false" class=" rounded-md w-[168px] h-[178px]" src="">
+
+            <div id="play-pause-box"
+                class="w-12 h-12 bg-white  absolute top-28 right-7 rounded-full flex justify-center items-center opacity-0 overflow-hidden transition-all">
+                <div id="pause-icon" class="w-5 h-5 bg-black clip-path-triangular ml-3 z-20"></div>
+                <div id="play-icon" class="flex gap-1 hidden">
+                    <span class="w-1 h-1 bg-black  mt-1 animate-GoUp1"></span>
+                    <span class="w-1 h-2 bg-black mt-1 animate-GoUp2 "></span>
+                    <span class="w-1 h-1 bg-black mt-1 animate-GoUp3"></span>
+                </div>
+            </div>
+            <audio id="audio" controls class="hidden" src="" type="audio/mp3" track-cat="NewTracks">
+
+            </audio>
+            <div class=" flex flex-col gap-1 py-2">
+                <p id="tracks_music" class="text-white font-normal">Modelame</p>
+                <p id="tracks_artist" class="text-gray-500 text-sm">Yousef Zamani</p>
+            </div>
+        </a>
+    </li>
+</template>
+<!-- DJ Mixes -->
+<div class="w-[98%] h-auto p-4   ">
+    <p class="w-full font-sans text-xl font-black text-left text-white px-3">DJ Mixes</p>
+    <div class="w-full h-full overflow-x-scroll ul-box">
+        <ul id="djMixes_ul" class="w-auto py-3 flex relative m-0 z-50 New-Tracks">
+
+
+
+        </ul>
+    </div>
+</div>
+<!-- DjMixes li template -->
+<template id="djMixes_li_template">
+
+    <li class="min-w-[200px] w-[200px] h-auto inline-block px-3 cursor-pointer relative">
+        <a id="track-a" href="Single">
+            <img id="tracks_profile" draggable="false" class=" rounded-md w-[168px] h-[178px]" src="">
+            <div id="play-pause-box"
+                class="w-12 h-12 bg-white  absolute top-28 right-7 rounded-full flex justify-center items-center opacity-0 overflow-hidden transition-all">
+                <div id="pause-icon" class="w-5 h-5 bg-black clip-path-triangular ml-3 z-20"></div>
+                <div id="play-icon" class="flex gap-1 hidden">
+                    <span class="w-1 h-1 bg-black  mt-1 animate-GoUp1"></span>
+                    <span class="w-1 h-2 bg-black mt-1 animate-GoUp2 "></span>
+                    <span class="w-1 h-1 bg-black mt-1 animate-GoUp3"></span>
+                </div>
+            </div>
+            <audio id="audio" controls class="hidden" src="" type="audio/mp3" track-cat="DjMixes">
+
+            </audio>
+
+            <div class=" flex flex-col gap-1 py-2">
+                <p id="tracks_music" class="text-white font-normal">Modelame</p>
+                <p id="tracks_artist" class="text-gray-500 text-sm">Yousef Zamani</p>
+            </div>
+        </a>
+    </li>
+</template>
+
+<!-- Weekly Top Musics -->
+<div class="w-[98%] h-auto p-4   ">
+    <p class="w-full font-sans text-xl font-black text-left text-white px-3">Weekly Top Musics</p>
+    <div class="w-full h-full overflow-x-scroll ul-box">
+        <ul id="top_week_ul" class="w-[1570px] py-3 grid grid-cols-5 cursor-pointer  gap-3 relative ml-3 z-50 New-Tracks">
+
+        </ul>
+    </div>
+</div>
+<!-- Weekly Top Musics template -->
+<template id="top_week_li_template">
+
+    <li class="min-w-[300px] w-[300px] h-16 ">
+        <a id="track-a" href="Single"
+            class="min-w-[300px] w-[300px] h-16 flex gap-2 rounded-md overflow-hidden bg-[#2d2d2d] cursor-pointer relative">
+            <img id="tracks_profile" draggable="false" src="">
+            <div id="play-pause-box"
+                class="w-12 h-12 bg-white  absolute top-2 right-3 rounded-full flex justify-center items-center opacity-0 overflow-hidden transition-all">
+                <div id="pause-icon" class="w-5 h-5 bg-black clip-path-triangular ml-3 z-20"></div>
+                <div id="play-icon" class="flex gap-1 hidden">
+                    <span class="w-1 h-1 bg-black  mt-1 animate-GoUp1"></span>
+                    <span class="w-1 h-2 bg-black mt-1 animate-GoUp2 "></span>
+                    <span class="w-1 h-1 bg-black mt-1 animate-GoUp3"></span>
+                </div>
+            </div>
+            <audio id="audio" controls class="hidden" src="" type="audio/mp3" track-cat="TopWeek">
+
+            </audio>
+            <div class=" flex flex-col gap-1 py-2">
+                <p id="tracks_music" class="text-white font-normal">Modelame</p>
+                <p id="tracks_artist" class="text-gray-500 text-sm">Yousef Zamani</p>
+            </div>
+        </a>
+    </li>
+</template>
+<!-- Monthly Top Musics -->
+<div class="w-[98%] h-auto p-4   ">
+    <p class="w-full font-sans text-xl font-black text-left text-white px-3">Monthly Top Musics</p>
+    <div class="w-full h-full overflow-x-scroll ul-box">
+        <ul id="top_month_ul" class="w-[1570px] py-3 grid grid-cols-5 cursor-pointer gap-3 relative ml-3 z-50 New-Tracks">
+
+        </ul>
+    </div>
+</div>
+<!-- Monthly Top Musics template -->
+<template id="top_month_li_template">
+
+    <li class="min-w-[300px] w-[300px] h-16 ">
+        <a id="track-a" href="Single"
+            class="min-w-[300px] w-[300px] h-16 flex gap-2 rounded-md overflow-hidden bg-[#2d2d2d] cursor-pointer relative">
+            <img id="tracks_profile" draggable="false" src="">
+            <div id="play-pause-box"
+                class="w-12 h-12 bg-white  absolute top-2 right-3 rounded-full flex justify-center items-center opacity-0 overflow-hidden transition-all">
+                <div id="pause-icon" class="w-5 h-5 bg-black clip-path-triangular ml-3 z-20"></div>
+                <div id="play-icon" class="flex gap-1 hidden">
+                    <span class="w-1 h-1 bg-black  mt-1 animate-GoUp1"></span>
+                    <span class="w-1 h-2 bg-black mt-1 animate-GoUp2 "></span>
+                    <span class="w-1 h-1 bg-black mt-1 animate-GoUp3"></span>
+                </div>
+            </div>
+            <audio id="audio" controls class="hidden" src="" type="audio/mp3" track-cat="TopMonth">
+
+            </audio>
+            <div class=" flex flex-col gap-1 py-2">
+                <p id="tracks_music" class="text-white font-normal">Modelame</p>
+                <p id="tracks_artist" class="text-gray-500 text-sm">Yousef Zamani</p>
+            </div>
+        </a>
+    </li>
+
+</template>

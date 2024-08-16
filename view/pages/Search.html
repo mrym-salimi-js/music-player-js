@@ -1,0 +1,93 @@
+<div class="w-full p-8">
+    <!-- Search -->
+    <div class="w-[87%] md:w-[56%] h-12 rounded-full bg-[#303031] flex gap-4 items-center p-4">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24 " fill="currentColor"
+            class="w-6 h-6  fill-white cursor-pointer">
+            <path fill-rule="evenodd"
+                d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z"
+                clip-rule="evenodd" />
+        </svg>
+
+        <input id="serach_artist" class="outline-none w-[85%] bg-transparent text-white" placeholder="Search artist...">
+    </div>
+
+    <!-- Genres -->
+    <div class="w-full py-8 mb-[70px]">
+        <p id="not-found"
+            class="w-auto h-auto absolute left-0 right-0 m-auto text-center top-[74%] text-yellow-600 text-2xl saturate-[0.4] font-sans z-50 hidden">
+
+            Oops, no results were found
+        </p>
+        <ul id="search_ul" class="w-full flex-wrap sm:flex sm:flex-row flex flex-col gap-3">
+            <li class="sm:w-[30%] w-full h-40 rounded-3xl flex flex-wrap items-center justify-around bg-yellow-500 relative">
+                <p class="w-full h-full leading-[9.5rem] text-white font-sans font-bold cursor-pointer text-center absolute genre-name">Remix</p>
+            </li>
+            <li class="sm:w-[30%] w-full h-40 rounded-3xl flex flex-wrap items-center justify-around bg-pink-600 relative">
+                <p class="w-full h-full leading-[9.5rem] text-white font-sans font-bold cursor-pointer text-center absolute genre-name">Romantic</p>
+            </li>
+            <li class="sm:w-[30%] w-full h-40 rounded-3xl flex flex-wrap items-center justify-around bg-teal-700 relative">
+                <p class="w-full h-full leading-[9.5rem] text-white font-sans font-bold cursor-pointer text-center absolute genre-name">Happy</p>
+            </li>
+            <li id="genre-name" class="sm:w-[30%] w-full h-40 rounded-3xl flex flex-wrap items-center justify-around bg-blue-800 relative genre-name">
+                <p class="w-full h-full leading-[9.5rem] text-white font-sans font-bold cursor-pointer text-center absolute genre-name">Traditional</p>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Serach li template -->
+    <template id="search_li_template">
+        <li
+            class=" hover:opacity-60 w-full h-16 flex justify-between rounded-lg overflow-hidden bg-[#2d2d2d] cursor-pointer relative pr-6">
+            <a id="track-a" href="Single" class=" w-[80%] h-16 flex justify-between  ">
+
+                <img id="artist_profile" draggable="false" src="">
+
+                <div id="play-pause-box" class="w-auto h-auto self-center absolute left-24">
+                    <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="w-6 h-6 fill-white self-center">
+                        <path fill-rule="evenodd"
+                            d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="w-6 h-6  fill-white self-center hidden">
+                        <path fill-rule="evenodd"
+                            d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+
+                <audio id="audio" controls class="hidden" src="" type="audio/mp3">
+
+                </audio>
+                <div class="md:flex md:flex-row md:gap-5 flex-col  gap-3 self-center">
+                    <p id="music_name" class="text-white font-normal self-center text-left">Modelame</p>
+                    <p id="artist_name" class="text-gray-500 text-sm self-center text-left">Yousef Zamani</p>
+                </div>
+
+                <p id="music_duration" class="text-white font-normal text-sm self-center">03:45</p>
+
+            </a>
+            <div class="flex gap-4 items-center">
+                <div id="share-track">
+                    <svg id="share-track-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="w-6 h-6 fill-white share-track">
+                        <path id="share-track-path" fill-rule="evenodd"
+                            d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <a id="download-track" download-link="active">
+                    <svg id="download-track-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="currentColor" class="w-6 h-6 fill-white" download-link="active">
+                        <path download-link="active" id="download-track-path" fill-rule="evenodd"
+                            d="M10.5 3.75a6 6 0 00-5.98 6.496A5.25 5.25 0 006.75 20.25H18a4.5 4.5 0 002.206-8.423 3.75 3.75 0 00-4.133-4.303A6.001 6.001 0 0010.5 3.75zm2.25 6a.75.75 0 00-1.5 0v4.94l-1.72-1.72a.75.75 0 00-1.06 1.06l3 3a.75.75 0 001.06 0l3-3a.75.75 0 10-1.06-1.06l-1.72 1.72V9.75z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+
+        </li>
+    </template>
+
+</div>
